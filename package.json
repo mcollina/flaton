@@ -1,0 +1,26 @@
+{
+  "name": "flaton",
+  "version": "0.0.1",
+  "description": "go away",
+  "main": "flaton.js",
+  "scripts": {
+    "test": "standard | snazzy && tape test.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcollina/flaton.git"
+  },
+  "author": "Matteo Collina <hello@matteocollina.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcollina/flaton/issues"
+  },
+  "homepage": "https://github.com/mcollina/flaton#readme",
+  "devDependencies": {
+    "pre-commit": "^1.1.3",
+    "snazzy": "^5.0.0",
+    "standard": "^8.6.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3"
+  }
+}
