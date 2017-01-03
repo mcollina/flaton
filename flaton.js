@@ -1,22 +1,28 @@
 'use strict'
 
 var ShortString = 0x0001
+var Null = 0x0000
+var NullBuf = Buffer.from([Null])
 
 function encode (obj) {
-  var pos = 0
   var isStr = typeof obj === 'string'
-  var len = 1
-  var buf = null
-  var blen = 0
   if (isStr) {
-    blen = Buffer.byteLength(obj) // max 256 length
-    len += 1 + blen
-    buf = Buffer.allocUnsafe(len)
-    pos = buf.writeUInt16BE((ShortString << 8 | blen), pos)
-    buf.write(obj, pos)
+    return encodeShortString(obj)
+  } else if (obj === null) {
+    return NullBuf
   } else {
     throw new Error('unable to encode')
   }
+}
+
+function encodeShortString (obj) {
+  var blen = Buffer.byteLength(obj) // max 256 length
+  var len = 2 + blen
+  var buf = Buffer.allocUnsafe(len)
+  var pos = 0
+
+  pos = buf.writeUInt16BE((ShortString << 8 | blen), pos)
+  buf.write(obj, pos)
 
   return buf
 }
@@ -29,6 +35,8 @@ function decode (buf) {
     case ShortString:
       len = buf.readUInt8(pos++)
       return buf.toString('utf8', pos, pos + len)
+    case Null:
+      return null
     default:
       throw new Error('unable to decode')
   }

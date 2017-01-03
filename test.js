@@ -13,3 +13,11 @@ test('encode and decode a string', function (t) {
   t.equal(decode(buf), str, 'decode works')
   t.end()
 })
+
+test('encode and decode null', function (t) {
+  var buf = encode(null)
+  t.ok(buf instanceof Buffer, 'encode returns a buffer')
+  t.equal(buf.length, 1, 'one byte of type')
+  t.equal(decode(buf), null, 'decode works')
+  t.end()
+})
