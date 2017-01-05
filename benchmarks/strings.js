@@ -26,23 +26,11 @@ function decodeFlatonShortString (cb) {
   process.nextTick(cb)
 }
 
-function encodeDecodeJson (cb) {
-  JSON.parse(JSON.stringify('hello'))
-  process.nextTick(cb)
-}
-
-function encodeDecodeFlaton (cb) {
-  flaton.decode(flaton.encode('hello'))
-  process.nextTick(cb)
-}
-
 var run = bench([
   encodeJsonShortString,
-  encodeFlatonShortString,
   decodeJsonShortString,
-  decodeFlatonShortString,
-  encodeDecodeJson,
-  encodeDecodeFlaton
+  encodeFlatonShortString,
+  decodeFlatonShortString
 ], 1000000)
 
 run(run)

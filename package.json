@@ -22,5 +22,8 @@
     "standard": "^8.6.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "hashlru": "^1.0.6"
   }
 }
