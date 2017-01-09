@@ -8,6 +8,8 @@ test('encode and decode a string', (t) => {
   const str = 'hello world'
   w.writeString(str)
 
+  console.log(w.asBuffer())
+
   t.ok(w.asBuffer() instanceof Buffer, 'asBuffer returns a buffer')
   t.ok(w.asUint8Array() instanceof Uint8Array, 'asBuffer returns a buffer')
 
